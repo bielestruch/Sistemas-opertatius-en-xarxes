@@ -22,12 +22,16 @@ creo els grups que diu el enunciat
 
 ### Crear un usuari admin01 (membre del grup admins).
 ![alt text](image-6.png)
+Creo el usuaris que hem demana
 ### Creació de Directoris (al Servidor):
 
 ### Crear el directori per als projectes de desenvolupament: /srv/nfs/dev_projects -Crear el directori per a les eines d'administració: /srv/nfs/admin_tools
 ### Permisos del Servidor (El punt clau):
-
+![alt text](image-7.png)
+creo els dos directoris que me has demanat
 ### Es vol que els developers tinguin control total sobre els seus projectes.
+![alt text](image-8.png)
+dono permisos de lectura, escriptura i execució al directori i asigno devs al directori
 ### Es vol que els administradors tinguin control sobre les seves eines.
 ### En tots dos casos, l'usuari propietari serà root.
 ### Com a pas final, s'instal·laran els paquets necessaris per al servei NFS al servidor i es configurarà l'exportació dels directoris amb les opcions adequades.
