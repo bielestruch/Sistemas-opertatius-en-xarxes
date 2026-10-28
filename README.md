@@ -4,14 +4,14 @@
 
 ![alt text](image-4.png)
 
-![alt text](image-2.png)
+![alt text](image-16.png)
 
-![alt text](image-1.png)
+![alt text](image-15.png)
 
 ![alt text](image-3.png)
 
 
-Poso de primer adaptador NAT i de segon ADAPTADOR xarxa nomes amfitrio
+Poso de primer adaptador Xarxa NAT i de segon ADAPTADOR xarxa nomes amfitrio
 
 ### Fase 2: Preparació del servidor
 ### Abans de compartir res, hem de preparar els usuaris i els directoris al Servidor.
@@ -66,9 +66,20 @@ consulto els UID i GID, comprobo si existeix el usuari i el creo perque no exist
 ## FASE 3
 
 ## El client necessita que el directori /srv/nfs/admin_tools sigui accessible per l'equip d'administradors. A vegades, l'usuari root del client (que sou vosaltres, els consultors) necessitarà escriure en aquest directori per instal·lar eines. Aquí mostrarem un error típic i la seva solució.
+![alt text](image-17.png)
+![alt text](image-18.png)
+![alt text](image-21.png)
+![alt text](image-20.png)
+![alt text](image-19.png)
+
+
+Instalo amb les einas del client NFS, Creo el directori on muntare la carpeta compartida, busco la ip i Montu el directori compartit del servido,
+
 
 ## Prova 1 (L'error comú)
 ## Exportar el directori /srv/nfs/admin_tools amb les opcions 'rw,sync'.
+![alt text](image-22.png)
+![alt text](image-23.png)
 
 ## Des del client, muntar aquest recurs compartit a /mnt/admin_tools. Com a root del client, intentar crear un fitxer dins d'aquest directori muntat.
 
