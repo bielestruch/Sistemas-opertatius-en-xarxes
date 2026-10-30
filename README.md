@@ -17,6 +17,7 @@ Poso de primer adaptador Xarxa NAT i de segon ADAPTADOR xarxa nomes amfitrio
 ### Abans de compartir res, hem de preparar els usuaris i els directoris al Servidor.
 
 ### Creació de Grups: Crear dos grups per al client: devs i admins.
+
 ![alt text](image-5.png)
 
 
@@ -24,6 +25,7 @@ creo els grups que diu el enunciat
 ### Creació d'Usuaris: Crear un usuari dev01 (membre del grup devs).
 
 ### Crear un usuari admin01 (membre del grup admins).
+
 ![alt text](image-6.png)
 
 
@@ -32,22 +34,27 @@ Creo el usuaris que hem demana
 
 ### Crear el directori per als projectes de desenvolupament: /srv/nfs/dev_projects -Crear el directori per a les eines d'administració: /srv/nfs/admin_tools
 ### Permisos del Servidor (El punt clau):
+
 ![alt text](image-7.png)
 
 
 creo els dos directoris que me has demanat
 ### Es vol que els developers tinguin control total sobre els seus projectes.
+
 ![alt text](image-8.png)
 
 dono permisos de lectura, escriptura i execució al directori i asigno devs al directori
 ### Es vol que els administradors tinguin control sobre les seves eines.
+
 ![alt text](image-9.png)
 
 dono permisos de lectura, escriptura i execució al directori i asigno devs al directori
 ### En tots dos casos, l'usuari propietari serà root.
+
 ![alt text](image-9.png)
 ![alt text](image-8.png)
 ### Com a pas final, s'instal·laran els paquets necessaris per al servei NFS al servidor i es configurarà l'exportació dels directoris amb les opcions adequades.
+
 ![alt text](image-10.png)
 ![alt text](image-11.png)
 ![alt text](image-12.png)
@@ -66,10 +73,15 @@ consulto els UID i GID, comprobo si existeix el usuari i el creo perque no exist
 ## FASE 3
 
 ## El client necessita que el directori /srv/nfs/admin_tools sigui accessible per l'equip d'administradors. A vegades, l'usuari root del client (que sou vosaltres, els consultors) necessitarà escriure en aquest directori per instal·lar eines. Aquí mostrarem un error típic i la seva solució.
+
 ![alt text](image-17.png)
+
 ![alt text](image-18.png)
+
 ![alt text](image-21.png)
+
 ![alt text](image-20.png)
+
 ![alt text](image-19.png)
 
 
@@ -78,10 +90,20 @@ Instalo amb les einas del client NFS, Creo el directori on muntare la carpeta co
 
 ## Prova 1 (L'error comú)
 ## Exportar el directori /srv/nfs/admin_tools amb les opcions 'rw,sync'.
+
 ![alt text](image-22.png)
 ![alt text](image-23.png)
 
+
+Primer he entrat a la màquina virtual servidor i he obert el fitxer de configuració d'exports de NFS i després he afegit aquesta línia per compartir el directori /srv/nfs/admin_tools amb permisos de lectura i escriptura
+
 ## Des del client, muntar aquest recurs compartit a /mnt/admin_tools. Com a root del client, intentar crear un fitxer dins d'aquest directori muntat.
+
+![alt text](image-24.png)
+
+![alt text](image-25.png)
+
+Primer he entrat a la màquina virtual client i he muntat el directori compartit del servidor a /mnt/admin_tools i després, he intentat crear un fitxer dins del directori muntat utilitzant l'usuari root del client:
 
 ## Verificar quin és el propietari del fitxer creat. Per què? Justificar la resposta amb l'explicació tècnica de 'root_squash'.
 
