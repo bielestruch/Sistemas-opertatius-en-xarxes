@@ -91,11 +91,11 @@ Instalo amb les einas del client NFS, Creo el directori on muntare la carpeta co
 ## Prova 1 (L'error comú)
 ## Exportar el directori /srv/nfs/admin_tools amb les opcions 'rw,sync'.
 
-![alt text](image-22.png)
-![alt text](image-23.png)
+![alt text](image-31.png)
 
+![alt text](image-32.png)
 
-Primer he entrat a la màquina virtual servidor i he obert el fitxer de configuració d'exports de NFS i després he afegit aquesta línia per compartir el directori /srv/nfs/admin_tools amb permisos de lectura i escriptura
+Primer he entrat a la màquina virtual servidor i he obert el fitxer de configuració d'exports de NFS i després he afegit aquesta línia per compartir el directori /srv/nfs/admin_tools amb permisos de lectura i escriptura i despres he aplicat els canvis
 
 ## Des del client, muntar aquest recurs compartit a /mnt/admin_tools. Com a root del client, intentar crear un fitxer dins d'aquest directori muntat.
 
@@ -107,9 +107,64 @@ Primer he entrat a la màquina virtual client i he muntat el directori compartit
 
 ## Verificar quin és el propietari del fitxer creat. Per què? Justificar la resposta amb l'explicació tècnica de 'root_squash'.
 
+![alt text](image-27.png)
+
+He comprovat el propietari del fitxer prova.txt amb la comanda ls -ln /mnt/admin_tools. El resultat mostra que el propietari té UID 0 i el grup té GID 0, és a dir, apareix com a root:root.
+
+Això no és el resultat esperat si root_squash està activat, ja que aquesta opció transforma les peticions de l'usuari root del client en un usuari anònim, normalment amb UID 65534.
+
 ## Prova 2 (La Solució)
 ## Modificar l'exportació del directori /srv/nfs/admin_tools per incloure l'opció 'no_root_squash'.
 
-### Al client, desmuntar i tornar a muntar el recurs compartit.
+![alt text](image-34.png)
 
-### Com a root del client, intentar crear un fitxer dins d'aquest directori muntat. Observeu quin és el propietari del fitxer creat aquesta vegada. Ha canviat alguna cosa? Justificar la resposta amb l'explicació tècnica de 'no_root_squash'.
+![alt text](image-33.png)
+
+He entrat a la màquina virtual servidor i he obert el fitxer de configuració, he modificat la línia del directori admin_tools i he aplicat la nova configuració
+
+## Al client, desmuntar i tornar a muntar el recurs compartit.
+
+![alt text](image-35.png)
+
+![alt text](image-36.png)
+
+He entrat a la maquina virtual del client desmuntar el recurs compartit i tornar a muntar el recurs compartit
+
+## Com a root del client, intentar crear un fitxer dins d'aquest directori muntat. Observeu quin és el propietari del fitxer creat aquesta vegada. Ha canviat alguna cosa? Justificar la resposta amb l'explicació tècnica de 'no_root_squash'.
+
+![alt text](image-37.png)
+
+he intentat crear un fitxer dins del directori compartit com a usuari root i Després he comprovat qui és el propietari del fitxer
+
+# Fase 4: L'Exportació de Desenvolupament (Permisos rw vs ro)
+## Editar /etc/exports per afegir dues exportacions per al mateix directori. El client vol que la xarxa d'administració (p.ex., 192.168.56.0/24) hi pugui escriure, però que la xarxa de consultors (simularem que és una altra IP, p.ex., 192.168.56.150) només pugui llegir.
+
+![alt text](image-38.png)
+
+![alt text](image-39.png)
+
+He entrat a la màquina virtual servidor i he obert el fitxer de configuració, he afegit aquestes dues línies al fitxer i he aplicat la nova configuració
+
+## Si les dues màquines es veuen per xarxa NAT, useu una IP consistent amb el rang de la xarxa NAT. Per exemple, per exemple, 10.0.2.100.
+
+![alt text](image-42.png)
+
+![alt text](image-40.png)
+
+![alt text](image-41.png)
+
+He entrat a la configuaracio i he adaptat la lineas al que hem demana el exercici i he aplicat els canvis
+
+## Des del client, muntar el recurs compartit a /mnt/dev_projects i provar d'escriure-hi com a usuari dev01. Hauria de funcionar.
+
+![alt text](image-43.png)
+
+![alt text](image-45.png)
+
+![alt text](image-44.png)
+
+Creo el directorio, monto la carpeta compartida, cambio al usuario dev01 i probo si puedes escribir
+
+## Desmuntar el recurs i canviar manualment la IP del client a 192.168.56.100. Tornar a provar d'escriure al directori muntat com a usuari dev01 i comprovar que només funciona la lectura.
+
+## Canvieu d'usuari al client a admin01 i torneu a provar d'escriure al directori muntat. Comproveu que no es pot escriure, ja que admin01 no és membre del grup devs (permisos locals del sistema de fitxers).
