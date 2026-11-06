@@ -167,4 +167,48 @@ Creo el directorio, monto la carpeta compartida, cambio al usuario dev01 i probo
 
 ## Desmuntar el recurs i canviar manualment la IP del client a 192.168.56.100. Tornar a provar d'escriure al directori muntat com a usuari dev01 i comprovar que només funciona la lectura.
 
+![alt text](image-46.png)
+
+![alt text](image-47.png)
+
+![alt text](image-48.png)
+
+![alt text](image-51.png)
+
+![alt text](image-52.png)
+
+![alt text](image-53.png)
+
+![alt text](image-54.png)
+
+Primer he desmuntat el recurs compartit NFS des de la màquina virtual client, després he canviat manualment la IP del client a 192.168.56.100, he comprovat que la IP s'havia canviat correctament amb, a continuació, he tornat a muntar el recurs compartit, finalment, he intentat crear un fitxer com a usuari dev01.
+
 ## Canvieu d'usuari al client a admin01 i torneu a provar d'escriure al directori muntat. Comproveu que no es pot escriure, ja que admin01 no és membre del grup devs (permisos locals del sistema de fitxers).
+
+![alt text](image-55.png)
+
+![alt text](image-56.png)
+
+![alt text](image-57.png)
+
+Primer he canviat a l'usuari admin01 des de la màquina virtual client, després he intentat crear un fitxer dins del directori compartit i he comprovat el contingut del directori
+
+## Fase 5: Muntatge Automàtic amb /etc/fstab
+
+## Editar el fitxer /etc/fstab al client per afegir les entrades necessàries per muntar automàticament els recursos compartits NFS al directori /mnt/admin_tools i /mnt/dev_projects durant l'inici del sistema.
+
+![alt text](image-58.png)
+
+he obert el fitxer /etc/fstab i he afegit aquestes dues línies al final del fitxer
+
+## Executar la comanda mount -a per provar les entrades sense reiniciar.
+
+![alt text](image-59.png)
+
+He executat la comanda següent al client per comprovar les entrades del fitxer /etc/fstab sense haver de reiniciar la màquina virtual
+
+## Reiniciar el client i verificar que els recursos compartits s'han muntat correctament.
+
+![alt text](image-60.png)
+
+He reiniciat la màquina virtual client amb la comanda següent
